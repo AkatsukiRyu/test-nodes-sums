@@ -1,0 +1,16 @@
+<div class="form-section" [ngStyle]="style ? style : {'background-color': backgroundColor}">
+  <ng-container *ngIf="sectionHeader; then headerTemplate; else elseTemplate"></ng-container>
+  <ng-template #headerTemplate>
+    <div class="header">
+      <div class="text">{{sectionHeader}}</div>
+    </div>
+  </ng-template>
+  <ng-template #elseTemplate>
+    <div class='po-custom-header'>
+      <ng-container [ngTemplateOutlet]="poHeaderTemplate"></ng-container>
+    </div>
+  </ng-template>
+  <div class="content" [ngStyle]="contentStyle">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div [ngStyle]="{'display': wrapperDisplay }" class="wrapper-radio-custom">
+  <label
+    *ngFor="let option of options"
+    [ngClass]="{'mr-20': wrapperDisplay === 'flex'}"
+  >
+    <input
+      type="radio"
+      [name]="name"
+      [value]="option.value"
+      [(ngModel)]="value"
+      [disabled]="option.disabled || disabled"
+      (blur)="onInputBlur()"
+      (input)="onInputChange(option)"
+    />
+    <i [ngStyle]="radioCircleStyle"></i>
+    <span *ngIf="option.text" [ngStyle]="labelStyle">{{ option.text }}</span>
+  </label>
+</div>
+

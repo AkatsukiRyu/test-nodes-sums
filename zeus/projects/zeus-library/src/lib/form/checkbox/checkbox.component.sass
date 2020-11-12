@@ -1,0 +1,50 @@
+@import "mixins"
+@import "variables"
+
+label
+  display: flex
+  align-items: center
+  cursor: pointer
+  margin: 0
+
+  i
+    position: relative
+    height: 20px
+    width: 20px
+    border: 1px solid black
+    margin-right: 15px
+
+  input
+    appearance: none
+    display: none
+
+  .check-mark
+    &:checked ~ i:before
+      @include pseudo-block()
+      content: '\2713'
+      color: black
+      font-weight: bold
+      font-size: 1rem
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+  .grey-mark
+    &:checked ~ i:before
+      @include pseudo-block()
+      content: ' '
+      background-color: #666666
+      position: absolute
+      top: 0
+      bottom: 0
+      right: 0
+      left: 0
+
+.disabled
+  cursor: not-allowed
+  i
+    opacity: 0.7
+    border: 1px solid $border-color
+    background-color: $inactive-color !important
+

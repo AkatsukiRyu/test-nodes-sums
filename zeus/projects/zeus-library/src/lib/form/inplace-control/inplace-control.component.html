@@ -1,0 +1,27 @@
+<div class="po-inplace-control" [ngClass]="{'vertical-align': vAlign}">
+  <ng-container *ngIf="(state$ | async) === 'Read'; then readOnlyTemplate; else controlValueTemplate"></ng-container>
+
+  <ng-template #readOnlyTemplate>
+    <ng-container [ngTemplateOutlet]="readTemplate"></ng-container>
+    <span
+      class="edit-button-inplace"
+      (click)="changeMode('Edit')"
+      [id]="name"
+      *ngIf="allowEdit"
+    >
+      <span><img width="16" height="16" src="assets/shared/icons/ic_edit_blue.svg"/></span>
+      <span>{{editButtonTitle}}</span>  
+    </span>
+  </ng-template>
+
+  <ng-template #controlValueTemplate>
+    <ng-container [ngTemplateOutlet]="controlTemplate"></ng-container>
+    <div class="control-action">
+      <span class="save" (click)="confirm()"><img src="assets/shared/icons/ic_save_blue.svg" /> Save</span>
+      <span class="cancel" (click)="changeMode('Read', true)"><i class="fa fa-undo"></i> return</span>
+    </div>
+  </ng-template>
+  <ng-container *ngIf="onLoading$ | async">
+    <div class="loader"></div>
+  </ng-container>
+</div>

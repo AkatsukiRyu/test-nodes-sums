@@ -1,0 +1,60 @@
+<div class="host-control">
+  <input
+    class="ui-po-input"
+    [placeholder]="placeholder"
+    [ngStyle]="{'background': background}"
+    #showSelection
+    type="text"
+    [formControl]="inputController"
+    (focus)="toggleDropDownOptions()"
+    (blur)="blurSearcher()"
+  />
+  <span class="clear" *ngIf="value && allowedClear" (click)="clearValue()"
+    ><i class="fa fa-times"></i
+  ></span>
+  <span
+    class="drop-icon"
+    [ngStyle]="{'background': background}"
+    (click)="toggleDropDownOptions()"
+  >
+    <div class="ui-po-icon"></div>
+  </span>
+  <span
+    #toggleOverlay
+    (click)="appendToBody && op.show($event, showSelection)"
+  ></span>
+
+  <ng-container *ngIf="!appendToBody">
+    <ng-container
+      *ngTemplateOutlet="dropDownTemplate; context: {$implicit: toggleDropdown}"
+    ></ng-container>
+  </ng-container>
+</div>
+
+<p-overlayPanel
+  class="po-dropdown-overlay"
+  #op
+  [appendTo]="'body'"
+  [styleClass]="overlayStyleClass"
+  [style]="overlayStyle"
+  (onShow)="toggleDropdown = true"
+  (onHide)="toggleDropdown = false"
+>
+  <ng-container
+    *ngTemplateOutlet="dropDownTemplate; context: {$implicit: toggleDropdown}"
+  ></ng-container>
+</p-overlayPanel>
+
+<ng-template #dropDownTemplate let-toggle>
+  <div class="po-dropdown" *ngIf="toggle">
+    <ul class="po-list" #listItems>
+      <ng-container
+        *ngFor="let item of options$ | async; trackBy: trackByIndex"
+      >
+        <li class="item list-item" (click)="onSelect(item)">
+          {{ item[labelBinding].trim() }}
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</ng-template>

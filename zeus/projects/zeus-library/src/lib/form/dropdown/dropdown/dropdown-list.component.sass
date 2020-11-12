@@ -1,0 +1,101 @@
+@import "variables"
+
+.list .dropdown-item
+  text-transform: uppercase
+  font-size: 13px
+
+\:host
+  cursor: pointer
+  font-size: 13px
+  .host-control
+    display: flex
+    position: relative
+
+  .ui-po-input
+    flex: 1
+    min-height: 42px
+    font-weight: 400
+    width: 99%
+    text-align: left
+    padding: 7px 8px
+    border: 1px solid #bfced8
+    border-right: none
+
+  .drop-icon
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: white
+    border: 1px solid #bfced8
+    border-left: none
+
+  .text-upper-case
+    text-transform: uppercase
+
+  .ui-po-input[disabled]
+    background-color: white
+
+  .ui-po-icon
+    margin-right: 5px
+    border-left: 6px solid transparent
+    border-right: 6px solid transparent
+    border-top: 8px solid $primary-color
+
+  .po-dropdown
+    position: absolute
+    top: 42px
+    left: 0
+    width: 100%
+    background-color: white
+    box-shadow: 0 4px 13px 0 rgba(0, 0, 0, .09)
+    z-index: 1000
+
+    .search
+      padding: 5px
+
+      input
+        width: 100%
+        border: 1px solid #bfced8
+        text-transform: uppercase
+        padding: 7px 8px
+
+      input:focus
+        border-color: #5897FB
+        box-shadow: inset 0 0.25px 0.25px rgba(0, 0, 0, 0.025), 0 0 3px rgba(1, 128, 202, 0.6)
+
+    .po-list
+      max-height: 450px
+      overflow-y: auto
+      overflow-x: hidden
+
+      .group
+        margin-left: 8px
+
+        .group-label
+          font-weight: bold
+
+        .group-item
+          padding-left: 15px
+
+      .list .dropdown-item
+        text-transform: uppercase
+        font-size: 13px
+      .selected
+        background-color: #5897FB
+        color: white
+
+      .item
+        padding: 5px 8px
+
+      .item:hover
+        background-color: #5897FB !important
+        color: white
+
+  .clear
+    display: flex
+    align-items: center
+    background-color: white
+    padding: 0 5px
+    color: $secondary-color
+    border-top: 1px solid #bfced8
+    border-bottom: 1px solid #bfced8

@@ -1,0 +1,43 @@
+<div class="host-control" (click)="toggleDropDownOptions()" #dropdown>
+  <input class="ui-po-input" [ngClass]="{ 'text-upper-case': !group }" #showSelection type="text" disabled="true" />
+  <span class="drop-icon">
+    <div class="ui-po-icon"></div>
+  </span>
+  <span #toggleOverlay (click)="appendToBody && op.show($event, dropdown)"></span>
+
+  <ng-container *ngIf="!appendToBody">
+    <ng-container *ngTemplateOutlet="dropDownTemplate; context: {$implicit: toggleDropdown}"></ng-container>
+  </ng-container>
+</div>
+
+<p-overlayPanel class="po-dropdown-overlay" #op
+  [appendTo]="'body'" [styleClass]="'no-padding'"
+  (onShow)="toggleDropdown = true"
+  (onHide)="toggleDropdown = false">
+  <ng-container *ngTemplateOutlet="dropDownTemplate; context: {$implicit: toggleDropdown}"></ng-container>
+</p-overlayPanel>
+
+<ng-template #dropDownTemplate>
+  <div class="po-dropdown" *ngIf="toggleDropdown">
+    <div class="search">
+      <div class="icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <input #search *ngIf="filter" type="text" [placeholder]="placeholder" [formControl]="searchControl" />
+      <button class="btn" (click)="clearFilter()"><i class="fa fa-times-circle-o"></i></button>
+    </div>
+    <div class="po-list">
+      <ng-container *ngTemplateOutlet="itemListTemplate"></ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #itemListTemplate>
+  <ul class="list">
+    <ng-container *ngFor="let item of options$ | async; trackBy: trackByIndex">
+      <li [ngClass]="{'item-select-multiple': isStripedItem}" class="item">
+        <poseidon-checkbox [backgroundColor]="'#FFF'" [checkStyle]="'grey-mark'" [checked]="value && value.includes(item[valueBinding])" (selected)="onCheckItems(item)">{{ item[labelBinding].trim() }}</poseidon-checkbox>
+      </li>
+    </ng-container>
+  </ul>
+</ng-template>

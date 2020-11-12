@@ -1,0 +1,39 @@
+@import "variables"
+@import "mixins"
+
+label
+  display: flex
+  align-items: center
+  cursor: pointer
+  width: fit-content
+
+  & + label
+    margin-top: 5px
+
+  i
+    position: relative
+    display: inline-block
+    border: 2px solid $inactive-color
+    border-radius: 50%
+
+    &:before
+      @include pseudo-block(65%, 65%)
+      background: $inactive-color
+      border-radius: 50%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+  input
+    appearance: none
+    display: none
+
+    &:checked ~ i
+      border-color: $primary-color-dark
+
+      &:before
+        background: $primary-color-dark
+
+  span
+    margin-left: 5px

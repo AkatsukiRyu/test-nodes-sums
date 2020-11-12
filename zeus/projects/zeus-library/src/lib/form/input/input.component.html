@@ -1,0 +1,45 @@
+<label *ngIf="type === 'text'">
+  <input
+    [ngStyle]="disabledStyle"
+    [type]="inputType"
+    min="0"
+    [max]="max"
+    [ngClass]="{
+      'uppercase': textUppercase,
+      'text-center': textAlign === 'center',
+      'text-left': textAlign === 'left',
+      'text-right': textAlign === 'right'
+    }"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [readOnly]="disabled"
+    [ngModel]="value"
+    [maxlength]="maxLength"
+    class="input-custom"
+    (blur)="onInputBlur()"
+    (input)="onInputChange($event.target.value)"
+  />
+
+</label>
+
+<label *ngIf="type === 'textarea'">
+
+  <ng-container *ngIf="disabled; then disabledTemplate; else editTemplate"></ng-container>
+  <ng-template #disabledTemplate>
+    <div class="disabled-textarea" [ngStyle]="disabledStyle">
+      {{value}}
+    </div>
+  </ng-template>
+  <ng-template #editTemplate>
+    <textarea
+      class="input-custom"
+      [ngStyle]="disabledStyle"
+      [placeholder]="placeholder"
+      [ngClass]="{'uppercase': textUppercase, 'text-center': textAlign === 'center', 'text-left': textAlign === 'left', 'text-right': textAlign === 'right'}"
+      [ngModel]="value"
+      [maxlength]="maxLength"
+      (blur)="onInputBlur()"
+      (input)="onInputChange($event.target.value)"
+    ></textarea>
+  </ng-template>
+</label>
