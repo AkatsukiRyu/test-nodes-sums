@@ -15,10 +15,10 @@
   #primeCalendar
 >
 
-  <ng-container *ngIf="poseidonDateTemplate">
+  <ng-container *ngIf="zeusDateTemplate">
     <ng-template pTemplate="date" let-date>
       <ng-container
-        [ngTemplateOutlet]="poseidonDateTemplate"
+        [ngTemplateOutlet]="zeusDateTemplate"
         [ngTemplateOutletContext]="{ $implicit: date }">
       </ng-container>
     </ng-template>
@@ -33,11 +33,11 @@
 </ng-container>
 
 <ng-template #enabledIconTemplate>
-  
+
   <div class="p-calendar-icon">
     <img
       (click)="toggleCalendar()"
-      src="assets/shared/icons/calendar-icon-blue.png" 
+      src="assets/shared/icons/calendar-icon-blue.png"
       alt="calendar enabled"
     >
   </div>

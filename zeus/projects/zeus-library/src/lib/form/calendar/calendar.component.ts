@@ -10,7 +10,7 @@ import {
   ViewChild,
   AfterViewInit,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
@@ -19,18 +19,18 @@ import { Calendar } from 'primeng/calendar';
 const CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => CalendarComponent),
-  multi: true
+  multi: true,
 };
 
 @Directive({ selector: '[pDateTemplate]' })
-export class PDateTemplateDirective { }
+export class PDateTemplateDirective {}
 
 @Component({
-  selector: 'poseidon-calendar',
+  selector: 'zeus-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.sass'],
   providers: [CONTROL_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent implements ControlValueAccessor, AfterViewInit {
   @Input() public showTime = false;
@@ -51,17 +51,17 @@ export class CalendarComponent implements ControlValueAccessor, AfterViewInit {
   public disabled$ = new BehaviorSubject<boolean>(false);
 
   @ContentChild(PDateTemplateDirective, { static: true, read: TemplateRef })
-  public poseidonDateTemplate;
+  public zeusDateTemplate;
 
   @ViewChild('primeCalendar', { static: false })
   public primeCalendar: Calendar;
 
   private _date: Date;
 
-  public onchange = (value: Date) => { };
-  public onTouched = () => { };
+  public onchange = (value: Date) => {};
+  public onTouched = () => {};
 
-  public constructor() { }
+  public constructor() {}
 
   public ngAfterViewInit(): void {
     this.primeCalendar.value = this.date;

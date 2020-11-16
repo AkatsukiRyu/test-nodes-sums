@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PoseidonTableComponent } from './table/table.component';
+import { ZeusTableComponent } from './table/table.component';
 import {
   PoTableHeaderDirective,
   PoTableRowDirective,
@@ -8,15 +8,11 @@ import {
 
 @NgModule({
   declarations: [
-    PoseidonTableComponent,
+    ZeusTableComponent,
     PoTableHeaderDirective,
     PoTableRowDirective,
   ],
   imports: [CommonModule],
-  exports: [
-    PoseidonTableComponent,
-    PoTableHeaderDirective,
-    PoTableRowDirective,
-  ],
+  exports: [ZeusTableComponent, PoTableHeaderDirective, PoTableRowDirective],
 })
-export class PoseidonTableModule {}
+export class ZeusTableModule {}

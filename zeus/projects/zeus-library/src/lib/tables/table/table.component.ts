@@ -8,7 +8,7 @@ import {
   OnChanges,
   SimpleChanges,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import { orderBy, map, cloneDeep } from 'lodash-es';
 import { PoTableColumn, PoGroupTableData } from '../table.model';
@@ -17,13 +17,13 @@ import { ArrayUtils } from '../../../commons/utils/array.utils';
 import { PoTableHeaderDirective, PoTableRowDirective } from './table-directive';
 
 @Component({
-  selector: 'poseidon-table',
+  selector: 'zeus-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.sass'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PoseidonTableComponent implements OnChanges {
+export class ZeusTableComponent implements OnChanges {
   @Input() public headerBgColor: any;
   @Input() public sorted?: boolean;
   @Input() public data: any[];
@@ -57,7 +57,7 @@ export class PoseidonTableComponent implements OnChanges {
     if (changes.data) {
       if (this.sortDefault) {
         const cols = this.columns$.getValue();
-        const col = cols.find(column => column.trackBy === this.sortDefault);
+        const col = cols.find((column) => column.trackBy === this.sortDefault);
         col && this.sort(col, col.sort, true);
         return;
       }
@@ -70,7 +70,11 @@ export class PoseidonTableComponent implements OnChanges {
     return index;
   }
 
-  public sort(col: PoTableColumn, type: 'ASC' | 'DESC', defaultSorted?: boolean): void {
+  public sort(
+    col: PoTableColumn,
+    type: 'ASC' | 'DESC',
+    defaultSorted?: boolean
+  ): void {
     if (!this.sorted) {
       return;
     }
@@ -79,7 +83,7 @@ export class PoseidonTableComponent implements OnChanges {
     const cols = this.columns$.getValue();
 
     const columns = [];
-    map(cols, column => {
+    map(cols, (column) => {
       if (col.trackBy === column.trackBy) {
         if (!column.sort) {
           column.sort = type;
@@ -105,25 +109,35 @@ export class PoseidonTableComponent implements OnChanges {
 
   private sortColumnByChildren(col: PoTableColumn, type: 'ASC' | 'DESC') {
     if (col.isDate) {
-      const groups: PoGroupTableData[] = (this.data || []).map((group: PoGroupTableData) => {
-        const children = ArrayUtils.sortArrayByDate(group.children, type, col.trackBy);
+      const groups: PoGroupTableData[] = (this.data || []).map(
+        (group: PoGroupTableData) => {
+          const children = ArrayUtils.sortArrayByDate(
+            group.children,
+            type,
+            col.trackBy
+          );
 
-        return {
-          ...group,
-          children: [...children]
-        };
-      });
+          return {
+            ...group,
+            children: [...children],
+          };
+        }
+      );
 
       this.data$.next(groups);
       return;
     }
 
     const groupData = this.data.map((group: PoGroupTableData) => {
-      const children = orderBy(group.children, [col.trackBy], [type.toLowerCase()]);
+      const children = orderBy(
+        group.children,
+        [col.trackBy],
+        [type.toLowerCase()]
+      );
 
       return {
         ...group,
-        children: [...children]
+        children: [...children],
       };
     });
     this.data$.next(groupData);
@@ -131,7 +145,11 @@ export class PoseidonTableComponent implements OnChanges {
 
   private sortColumn(col: PoTableColumn) {
     if (col.isDate) {
-      const sortDate = ArrayUtils.sortArrayByDate(this.data, col.sort, col.trackBy);
+      const sortDate = ArrayUtils.sortArrayByDate(
+        this.data,
+        col.sort,
+        col.trackBy
+      );
       this.data$.next(sortDate);
       return;
     }

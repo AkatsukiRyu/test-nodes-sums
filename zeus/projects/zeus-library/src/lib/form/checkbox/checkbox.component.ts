@@ -1,18 +1,25 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Output, EventEmitter } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => CheckboxComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
-  selector: 'poseidon-checkbox',
+  selector: 'zeus-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.sass'],
   providers: [CONTROL_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent implements ControlValueAccessor {
   @Input() public backgroundColor = 'transparent';

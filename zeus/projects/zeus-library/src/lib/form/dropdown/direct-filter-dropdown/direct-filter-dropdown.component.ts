@@ -6,30 +6,31 @@ import {
   Input,
   forwardRef,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import { isEqual } from 'lodash-es';
 import { BaseDropdown } from '../based-dropdown';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Unsubscribable } from '../../../commons/decorators/unsubscribable.decorator';
-import { untilDestroyed } from '@poseidon-commons';
+import { untilDestroyed } from '@zeus-commons';
 import { debounceTime, tap } from 'rxjs/operators';
 
 const CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => DirectFilterDropdownComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
-  selector: 'poseidon-direct-filter-dropdown',
+  selector: 'zeus-direct-filter-dropdown',
   templateUrl: './direct-filter-dropdown.component.html',
   styleUrls: ['./direct-filter-dropdown.component.sass'],
   providers: [CONTROL_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 @Unsubscribable()
-export class DirectFilterDropdownComponent extends BaseDropdown implements OnInit {
+export class DirectFilterDropdownComponent extends BaseDropdown
+  implements OnInit {
   @Input() public background = 'white';
   public inputController = new FormControl('');
 
@@ -59,10 +60,14 @@ export class DirectFilterDropdownComponent extends BaseDropdown implements OnIni
   public blurSearcher(): void {
     this._onFilter = false;
     const value = this.inputController.value;
-    const existed = this._originalOpts.find(opt => opt[this.labelBinding] === value);
+    const existed = this._originalOpts.find(
+      (opt) => opt[this.labelBinding] === value
+    );
 
     this.value = existed ? existed[this.valueBinding] : '';
-    this.showSelectionElement.nativeElement.value = existed ? existed[this.labelBinding] : '';
+    this.showSelectionElement.nativeElement.value = existed
+      ? existed[this.labelBinding]
+      : '';
   }
 
   protected showValue(value?: any): void {
@@ -78,7 +83,7 @@ export class DirectFilterDropdownComponent extends BaseDropdown implements OnIni
     const _v =
       this._originalOpts &&
       this._originalOpts.length &&
-      this._originalOpts.find(opt => isEqual(opt[this.valueBinding], value));
+      this._originalOpts.find((opt) => isEqual(opt[this.valueBinding], value));
 
     const showValue =
       _v && _v[this.labelBinding]
@@ -107,7 +112,7 @@ export class DirectFilterDropdownComponent extends BaseDropdown implements OnIni
       .pipe(
         untilDestroyed(this),
         debounceTime(800),
-        tap(value => {
+        tap((value) => {
           this.typing.emit(value);
           this._onFilter = true;
         })

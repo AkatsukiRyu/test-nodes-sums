@@ -11,7 +11,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isNumber } from 'util';
 
 @Component({
-  selector: 'poseidon-input',
+  selector: 'zeus-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.sass'],
   providers: [
@@ -44,10 +44,10 @@ export class InputComponent implements ControlValueAccessor {
 
   public value: string | number;
 
-  private onChange = (value: string) => { };
-  private onTouched = () => { };
+  private onChange = (value: string) => {};
+  private onTouched = () => {};
 
-  public constructor() { }
+  public constructor() {}
 
   public registerOnChange(fn: () => void): void {
     this.onChange = fn;

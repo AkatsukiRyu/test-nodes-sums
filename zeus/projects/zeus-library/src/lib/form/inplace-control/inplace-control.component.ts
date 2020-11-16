@@ -10,22 +10,22 @@ import {
   Output,
   EventEmitter,
   HostListener,
-  ElementRef
+  ElementRef,
 } from '@angular/core';
 
 type State = 'Edit' | 'Read';
 
 @Directive({ selector: '[poReadonly]' })
-export class ReadOnlyElementDirective { }
+export class ReadOnlyElementDirective {}
 
 @Directive({ selector: '[poControl]' })
-export class ControlDirective { }
+export class ControlDirective {}
 
 @Component({
-  selector: 'poseidon-inplace',
+  selector: 'zeus-inplace',
   templateUrl: './inplace-control.component.html',
   styleUrls: ['./inplace-control.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InplaceControlComponent {
   @ContentChild(ReadOnlyElementDirective, { read: TemplateRef, static: false })
@@ -45,7 +45,7 @@ export class InplaceControlComponent {
 
   @Output() public dismiss = new EventEmitter();
 
-  public constructor(private elementRef: ElementRef) { }
+  public constructor(private elementRef: ElementRef) {}
 
   public changeMode(mode: State, dismiss?: boolean): void {
     this.state$.next(mode);
@@ -56,7 +56,7 @@ export class InplaceControlComponent {
   public confirm(): void {
     this.onLoading$.next(true);
     this.state$.next('Read');
-    this.onConfirmFn(this.index).then(result => {
+    this.onConfirmFn(this.index).then((result) => {
       this.onLoading$.next(false);
     });
   }

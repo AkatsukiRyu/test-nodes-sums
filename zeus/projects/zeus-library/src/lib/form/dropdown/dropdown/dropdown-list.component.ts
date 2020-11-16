@@ -6,10 +6,10 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Unsubscribable, untilDestroyed } from '@poseidon-commons';
+import { Unsubscribable, untilDestroyed } from '@zeus-commons';
 import { isEqual } from 'lodash-es';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { BaseDropdown } from '../based-dropdown';
@@ -17,18 +17,19 @@ import { BaseDropdown } from '../based-dropdown';
 const CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => DropdownListComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
-  selector: 'poseidon-dropdown',
+  selector: 'zeus-dropdown',
   templateUrl: './dropdown-list.component.html',
   styleUrls: ['./dropdown-list.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [CONTROL_VALUE_ACCESSOR]
+  providers: [CONTROL_VALUE_ACCESSOR],
 })
 @Unsubscribable()
-export class DropdownListComponent extends BaseDropdown implements OnInit, OnChanges {
+export class DropdownListComponent extends BaseDropdown
+  implements OnInit, OnChanges {
   @Input() public width = '240px';
   @Input() public background = 'white';
   @Input() public textColor = 'black';
@@ -70,7 +71,11 @@ export class DropdownListComponent extends BaseDropdown implements OnInit, OnCha
     this.selectItem();
   }
 
-  public onSelectGroupItem(option: any, groupIndex: number, itemIndex: number): void {
+  public onSelectGroupItem(
+    option: any,
+    groupIndex: number,
+    itemIndex: number
+  ): void {
     this.value = option[this.valueBinding];
     this.selectItem(groupIndex, itemIndex);
   }
@@ -88,15 +93,19 @@ export class DropdownListComponent extends BaseDropdown implements OnInit, OnCha
 
     if (this.group) {
       const v = this.getValueInGroup();
-      this.showSelectionElement.nativeElement.value = !v ? '' : v[this.labelBinding];
+      this.showSelectionElement.nativeElement.value = !v
+        ? ''
+        : v[this.labelBinding];
       return;
     }
 
     const _v =
       this._originalOpts && this._originalOpts.length
-        ? this._originalOpts.find(opt => {
+        ? this._originalOpts.find((opt) => {
             const optValue =
-              typeof opt[this.valueBinding] === 'string' ? opt[this.valueBinding].trim() : opt[this.valueBinding];
+              typeof opt[this.valueBinding] === 'string'
+                ? opt[this.valueBinding].trim()
+                : opt[this.valueBinding];
 
             if (typeof value === 'string') {
               return optValue === value.trim();
@@ -107,11 +116,15 @@ export class DropdownListComponent extends BaseDropdown implements OnInit, OnCha
         : value;
 
     if (_v) {
-      this.showSelectionElement.nativeElement.value = _v[this.labelBinding] ? _v[this.labelBinding] : _v;
+      this.showSelectionElement.nativeElement.value = _v[this.labelBinding]
+        ? _v[this.labelBinding]
+        : _v;
       return;
     }
 
-    this.showSelectionElement.nativeElement.value = this.value[this.labelBinding]
+    this.showSelectionElement.nativeElement.value = this.value[
+      this.labelBinding
+    ]
       ? this.value[this.labelBinding]
       : this.value;
   }
@@ -133,7 +146,7 @@ export class DropdownListComponent extends BaseDropdown implements OnInit, OnCha
         untilDestroyed(this),
         debounceTime(300),
         distinctUntilChanged(),
-        tap(text => this.search(text))
+        tap((text) => this.search(text))
       )
       .subscribe();
   }
@@ -145,7 +158,9 @@ export class DropdownListComponent extends BaseDropdown implements OnInit, OnCha
       const group = this._originalOpts[i];
       showValue =
         group[this.groupItemBinding] &&
-        group[this.groupItemBinding].find(item => isEqual(item[this.valueBinding], this.value));
+        group[this.groupItemBinding].find((item) =>
+          isEqual(item[this.valueBinding], this.value)
+        );
 
       i++;
     }

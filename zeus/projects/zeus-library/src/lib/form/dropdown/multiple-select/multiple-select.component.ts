@@ -1,23 +1,30 @@
-import { Component, OnInit, ChangeDetectionStrategy, ElementRef, forwardRef, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ElementRef,
+  forwardRef,
+  Input,
+} from '@angular/core';
 import { isEqual } from 'lodash-es';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 
 import { BaseDropdown } from '../based-dropdown';
-import { Unsubscribable, untilDestroyed } from '@poseidon-commons';
+import { Unsubscribable, untilDestroyed } from '@zeus-commons';
 
 const CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => MultipleSelectComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
-  selector: 'poseidon-multi-select-dropdown',
+  selector: 'zeus-multi-select-dropdown',
   templateUrl: './multiple-select.component.html',
   styleUrls: ['./multiple-select.component.sass'],
   providers: [CONTROL_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 @Unsubscribable()
 export class MultipleSelectComponent extends BaseDropdown implements OnInit {
@@ -42,7 +49,9 @@ export class MultipleSelectComponent extends BaseDropdown implements OnInit {
   public onCheckItems(item: any): void {
     const valueItems = this.value ? (this.value as Array<any>) : [];
 
-    const existed = valueItems.findIndex(it => isEqual(it, item[this.valueBinding]));
+    const existed = valueItems.findIndex((it) =>
+      isEqual(it, item[this.valueBinding])
+    );
 
     if (existed < 0) {
       valueItems.push(item[this.valueBinding]);
@@ -81,14 +90,14 @@ export class MultipleSelectComponent extends BaseDropdown implements OnInit {
     }
 
     if (!this._originalOpts || !this._originalOpts.length) {
-      const val = selectedItems.map(it => it[this.labelBinding]);
+      const val = selectedItems.map((it) => it[this.labelBinding]);
       this.showSelectionElement.nativeElement.value = val.join(', ');
       return;
     }
 
     const items = this._originalOpts
-      .filter(it => selectedItems.includes(it[this.valueBinding]))
-      .map(selected => selected[this.labelBinding].trim());
+      .filter((it) => selectedItems.includes(it[this.valueBinding]))
+      .map((selected) => selected[this.labelBinding].trim());
 
     this.showSelectionElement.nativeElement.value = items.join(', ');
   }
@@ -99,7 +108,7 @@ export class MultipleSelectComponent extends BaseDropdown implements OnInit {
         untilDestroyed(this),
         debounceTime(300),
         distinctUntilChanged(),
-        tap(text => this.search(text))
+        tap((text) => this.search(text))
       )
       .subscribe();
   }

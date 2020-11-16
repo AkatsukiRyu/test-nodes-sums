@@ -19,12 +19,10 @@
       "dom"
     ],
     "paths": {
-      "zeus-library": [
-        "dist/zeus-library"
-      ],
-      "zeus-library/*": [
-        "dist/zeus-library/*"
-      ]
+      "@zeus-shared": ["./projects/zeus-demo/src/zeus-shared/*"],
+      "@kang-lib": ["./projects/zeus-library/*"],
+      "@zeus-modules": ["./projects/zeus-demo/src/app/*"]
+
     }
   },
   "angularCompilerOptions": {

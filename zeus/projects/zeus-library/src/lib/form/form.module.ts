@@ -5,7 +5,7 @@ import { DropdownModule } from './dropdown/dropdown.module';
 import { InputModule } from './input/input.module';
 import { RadioButtonModule } from './radio/radio-button.module';
 import { InplaceControlModule } from './inplace-control/inplace-control.module';
-import { PoseidonFormSectionModule } from './form-section/form-section.model';
+import { ZeusFormSectionModule } from './form-section/form-section.model';
 import { CalendarModule } from './calendar/calendar.module';
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { CalendarModule } from './calendar/calendar.module';
     RadioButtonModule,
     DropdownModule,
     InplaceControlModule,
-    PoseidonFormSectionModule
+    ZeusFormSectionModule,
   ],
   exports: [
     CheckboxModule,
@@ -23,8 +23,8 @@ import { CalendarModule } from './calendar/calendar.module';
     RadioButtonModule,
     DropdownModule,
     InplaceControlModule,
-    PoseidonFormSectionModule,
-    CalendarModule
-  ]
+    ZeusFormSectionModule,
+    CalendarModule,
+  ],
 })
-export class FormModule { }
+export class FormModule {}

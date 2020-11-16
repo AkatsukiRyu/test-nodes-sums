@@ -5,23 +5,23 @@ import {
   forwardRef,
   Input,
   EventEmitter,
-  Output
+  Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioOption } from './radio-option.model';
 
 @Component({
-  selector: 'poseidon-radio',
+  selector: 'zeus-radio',
   templateUrl: './radio-button.component.html',
   styleUrls: ['./radio-button.component.sass'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => RadioButtonComponent),
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioButtonComponent implements ControlValueAccessor {
   @Input() public options: RadioOption[];

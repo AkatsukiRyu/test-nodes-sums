@@ -36,7 +36,7 @@
   <ul class="list">
     <ng-container *ngFor="let item of options$ | async; trackBy: trackByIndex">
       <li [ngClass]="{'item-select-multiple': isStripedItem}" class="item">
-        <poseidon-checkbox [backgroundColor]="'#FFF'" [checkStyle]="'grey-mark'" [checked]="value && value.includes(item[valueBinding])" (selected)="onCheckItems(item)">{{ item[labelBinding].trim() }}</poseidon-checkbox>
+        <zeus-checkbox [backgroundColor]="'#FFF'" [checkStyle]="'grey-mark'" [checked]="value && value.includes(item[valueBinding])" (selected)="onCheckItems(item)">{{ item[labelBinding].trim() }}</zeus-checkbox>
       </li>
     </ng-container>
   </ul>
