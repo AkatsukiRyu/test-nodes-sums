@@ -1,0 +1,1 @@
+this Folder for only include models that belong to all application please don't put the models that's is unique for feature, module, component only.
