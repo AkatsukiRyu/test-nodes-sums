@@ -1,4 +1,10 @@
-# Game-X
+# who invited with as reviewer
+If you are invited as viewer for this project run npm start in game-server/core-server and then run npm start in DeepSea.react/deep-sea-portal
+When the application start try to click to login...
+
+I'M REALLY BUSY I CONTROLLED 2 PROJECTS SO FULL OF TIME TO CLEARLY MAKE YOU EX - IF YOU SEE THAT'S NOT ENOUGH IGNORE PLEASE TELL ME SOON, I NEED TO LOCKED THIS PROJECT.
+
+# Deep-Sea
 Hi Every one this is an complicated project because it is compiled from many fields. This project is very big with some one so if you want to contribute please contact me to add you for contribution my contact: khangnguyen0318@gmail.com.
  1. Game.
  2. Web Application Library

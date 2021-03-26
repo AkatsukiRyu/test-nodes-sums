@@ -19,4 +19,4 @@ import { AppEffects } from './app-store/app-store.effects';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

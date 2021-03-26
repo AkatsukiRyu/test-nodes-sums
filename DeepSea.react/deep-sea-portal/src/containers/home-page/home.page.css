@@ -1,0 +1,53 @@
+.home-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.left-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 8px;
+    row-gap: 15px;
+    column-gap: 15px;
+    width: 80%;
+}
+
+.right-container {
+    display: grid;
+    padding: 8px;
+    grid-template-columns: auto;
+    row-gap: 20px;
+    width: 20%;
+}
+
+.private-routing {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    margin: 8px;
+    color: white;
+    border: 1px solid black;
+}
+
+.routing-item {
+    width: 33.33%;
+    background-color: #1a57b1;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.routing-item:hover {
+    background-color: #3972c7;
+}

@@ -4,6 +4,7 @@ import { ErrorMessageLog } from '../../models/app-models';
 import { AppUser } from '../../models/app-user.model';
 import { ZeusAppActions } from './app-store.actions';
 
+export const ZeusStoredName = '[ZEUS]RootingStored';
 interface State {
   userInfo: AppUser;
   errorLog: ErrorMessageLog;
