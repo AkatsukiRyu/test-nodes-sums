@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mapapis",
+  "private_key_id": "4e3c0d0647106005977c1536807938354399c7f7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC/YVAMVRBCY/a8\nW7axHH9V0fS6q9iKsKNIPSE3Igioh3nBTLNzcrfjgTEsCWgg9q097agFroouKN7/\nfEVN8y4u1uC57FgeUk+tJyMYHMMTkVqweQRQ2+gglaab6ocJXEc7OtHaykjxp+W6\nX4oSem++DaOiVHtnDR494luT4zh5EF5xVNtI2muf4Ke0zJvjQeOhgGFZCQIkZiUc\nPW/qwhqMD+qdECy7OGVEg0YTgLPm9YG1/ts7kbav6bAY2rKMoPJGhMM6RAo2anGd\nyYsS1ojRu9BEUh9XAMy95gexmJrUVTn13vQthHNRZARdEJ8PviIlJwEwGroNCsUi\nsXYa7JmBAgMBAAECggEABV5PEud8cyZPdKlscqOqYT+IWkephXtuux8m3D9ux350\nYIMcqg2C4cV9Gf+CDaGpyqnM26rxmpmgJsHHRmheyGbT6zc5YhFcRY7KXdnpsXXz\nea2NXNDMXkSgZbGCm/U8FMnhut3PhcLYT33wVzQayBWlHE+7HfEI4wLDX57BNeke\nkcrKCyggIVcYAdgRzTgQb1zT1Ps7u1hF8yf27W9Qc7N6gtAZ7RjQT3kU2VtYCggZ\nkp58bTdyQlR+dotJnkDqpA4v07mLGGqxzTxkh4oVzNemV497E2clSbf4apBx2m0W\nqCvIAFU+c0Ih0Ldl5Hua2vwJ6gHOUe1EQtGC1sRgoQKBgQDrs+NgNXW6OdsC0pSS\nqs2uh1N5Wv/dGGtlTyNts5iwJK17eFnPqt4dhON5dGPbsHmMSo6d61nelTqZaWqW\n+Xkfgg9WaBrpCRZFwXb27XiCTxdpPrTkaUhfe4WF9/teL2602FLT6+qL0dpnPVxT\nUrltlFrITKCoSEe3EjY95VJmcQKBgQDP3FMy2Hcw7LN9B/IlNID/TvNihvKSyPaM\nSYlUgscMgpVanXtN4AQGkqScZW9U92aEOncb2M8B0wmh1DfYGc8L6t1KKL37UrZ4\noj6GKROMFPPJN/G0BpBQCPOBNycyQMAk49XfGsR+aeylwuEsKW1ySTOP98KBWQmP\nhf2gOk6MEQKBgEed5AOSms/XznUAGQargU17buCbxsyeI9unfSNTA5zZuCChA+D2\nkQC1JQz9UW4qI/R9nvHa1fasrx54ClwPNz9cnF5ryWlvSmYtj4EdzJUDhSCEXiBc\n4RGqDXsUSztl/CRU6m3b6+tJ+yuNWGU06ISkJCViKxqWw7ubfAG4kR3xAoGAA9Wj\nr0dxA3UKZp8T533Nd2hEcyfcJ7sPWU0t/GIhO+jYyoAnOyuLx3dDFCOG50FdIclW\nUywvvW/gOJ0KnrDzMdwWUvznbFB9T0Jm9uChHK9yQ98FVXXdiaxwmYyj63hoUwXk\n9yWuREq989zhfIgTHc2d5uUCMJKs63nkUOVid5ECgYAaR44Sn+oMSXvPmdA0GVLx\nT+07vzjdxSpSc9mgrRcw5KYej4if2JE3BMxldCNAAFDPuKpCJJy6tO3kah6rNUxl\n0h8reOt3YkHuSi681NDB+boinlrVVk+DrMv9dyuzDKE3nkFyYhBlPvu+ueZrwvIo\ndhGG05RCt1D8Ow//SBeuJA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "booking-service@mapapis.iam.gserviceaccount.com",
+  "client_id": "106434799352143631043",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/booking-service%40mapapis.iam.gserviceaccount.com"
+}

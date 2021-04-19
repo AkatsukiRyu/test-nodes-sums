@@ -1,0 +1,21 @@
+<div class="login-form-container">
+  <div class="header-container">
+    <div class="header-info"> Login </div>
+  </div>
+
+  <div class="body-container" [formGroup]="loginForm">
+
+    <div class="ds-control">
+      <deepSea-input formControlName="username" type="text" [label]="'username'"></deepSea-input>
+    </div>
+
+    <div class="ds-control">
+      <deepSea-input type="password" [label]="'Password'" formControlName="password"></deepSea-input>
+    </div>
+  </div>
+
+  <div class="footer-container">
+    <button class="btn btn-cancel"> Cancel </button>
+    <button class="btn btn-confirm"> Login </button>
+  </div>
+</div>

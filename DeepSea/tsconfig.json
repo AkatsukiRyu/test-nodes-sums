@@ -11,20 +11,11 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "paths": {
-      "core-libs": [
-        "core-libs"
-      ],
-      "core-libs/*": [
-        "core-libs/*"
-      ]
+      "@app/forms": ["projects/core-libs/src/lib/form/index.ts"],
+      "@app/cores": ["projects/core-libs/src/lib/index.ts"]
     }
   },
   "angularCompilerOptions": {

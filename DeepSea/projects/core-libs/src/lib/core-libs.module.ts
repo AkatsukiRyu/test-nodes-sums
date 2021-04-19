@@ -6,10 +6,11 @@
  */
 
 import { NgModule } from '@angular/core';
+import { DSFormModule } from './form';
 
 @NgModule({
   declarations: [],
-  imports: [],
-  exports: [],
+  imports: [DSFormModule],
+  exports: [DSFormModule],
 })
-export class CoreLibsModule {}
+export class CoreLibsModule { }

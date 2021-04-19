@@ -1,0 +1,11 @@
+.ds-label {
+  color: #383838;
+}
+
+.ds-label &.focused {
+  color: #00a1d6;
+}
+
+.ds-label &.error {
+  color: #740000;
+}
